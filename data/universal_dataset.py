@@ -159,12 +159,12 @@ class AlignedDataset_all(BaseDataset):
             B_transform = get_transform(self.opt, transform_params, grayscale=False)
             condition = A_transform(condition)
             gt = B_transform(gt)
-            # if self.opt.phase == 'train':
-            #     if h < 256 or w < 256:
-            #         osize = [256, 256]
-            #         resi = transforms.Resize(osize, transforms.InterpolationMode.BICUBIC)
-            #         condition = resi(condition)
-            #         gt = resi(gt)
+            if self.opt.phase == 'train':
+                if h < 256 or w < 256:
+                    osize = [256, 256]
+                    resi = transforms.Resize(osize, transforms.InterpolationMode.BICUBIC)
+                    condition = resi(condition)
+                    gt = resi(gt)
                 
         return {'adap': condition, 'gt': gt, 'A_paths': A_path, 'B_paths': B_path}
     

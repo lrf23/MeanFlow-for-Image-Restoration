@@ -4,7 +4,7 @@ import sys
 import argparse
 from data import create_dataset
 from data.universal_dataset import AlignedDataset_all
-from src.model_meanflow_v4 import (MFDiT,Trainer, MeanFlow,set_seed)
+from src.model_meanflow_v1 import (MFDiT,Trainer, MeanFlow,set_seed)
 from src.UnetRes_Meanflow import UnetRes
 def parsr_args():
     parser = argparse.ArgumentParser()
